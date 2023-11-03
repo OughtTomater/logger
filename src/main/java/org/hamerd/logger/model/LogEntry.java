@@ -19,8 +19,8 @@ public class LogEntry {
         this.user = user;
     }
 
+    //TODO: Make ids automatically generate
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id")
     private long id;
 

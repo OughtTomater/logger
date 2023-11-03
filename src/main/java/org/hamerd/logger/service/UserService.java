@@ -1,16 +1,20 @@
 package org.hamerd.logger.service;
 
 import org.hamerd.logger.model.User;
+import org.hamerd.logger.repository.UserRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
-import java.util.List;
+@Service
+public class UserService {
+    @Autowired
+    UserRepository repository;
 
-public interface UserService {
+    public UserService(UserRepository repository) {
+        this.repository = repository;
+    }
 
-    User saveUser(User user);
-
-    List<User> fetchUserList();
-
-    User updateUser(User user, long id);
-
-    void deleteUserById(Long id);
+    public void saveNewUser(User user){
+        repository.save(user);
+    }
 }

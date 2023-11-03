@@ -1,9 +1,7 @@
 package org.hamerd.logger.repository;
 
 import org.hamerd.logger.model.LogEntry;
-import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.stereotype.Repository;
+import org.springframework.data.repository.CrudRepository;
 
-@Repository
-public interface LogEntryRepository extends JpaRepository<LogEntry, Long> {
+public interface LogEntryRepository extends CrudRepository<LogEntry, Long> {
 }

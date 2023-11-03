@@ -16,8 +16,8 @@ public class User {
         this.userName = userName;
     }
 
+    //TODO: Make ids automatically generate
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id")
     private long id;
 

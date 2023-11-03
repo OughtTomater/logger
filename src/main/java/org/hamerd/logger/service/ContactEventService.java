@@ -1,16 +1,20 @@
 package org.hamerd.logger.service;
 
 import org.hamerd.logger.model.ContactEvent;
+import org.hamerd.logger.repository.ContactEventRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
-import java.util.List;
+@Service
+public class ContactEventService {
+    @Autowired
+    ContactEventRepository repository;
 
-public interface ContactEventService {
+    public ContactEventService(ContactEventRepository repository) {
+        this.repository = repository;
+    }
 
-    ContactEvent saveContactEvent(ContactEvent contactEvent);
-
-    List<ContactEvent> fetchContactEventList();
-
-    ContactEvent updateContactEvent(ContactEvent contactEvent, long id);
-
-    void deleteContactEvent(Long id);
+    public void createContactEvent(ContactEvent contactEvent){
+        repository.save(contactEvent);
+    }
 }

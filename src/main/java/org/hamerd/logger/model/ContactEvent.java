@@ -10,31 +10,22 @@ public class ContactEvent {
 
     protected ContactEvent() {}
 
-    public ContactEvent(long id, String name, String address, String stateProvince, String country, ContactEvent contactEvent) {
-        this.id = id;
-        this.name = name;
-        this.address = address;
-        this.stateProvince = stateProvince;
-        this.country = country;
-        this.contactEvent = contactEvent;
-    }
-
+//TODO: Make ids automatically generate
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id")
     private long id;
 
-    @Column(name = "name")
-    private String name;
+    @Column(name = "callsign")
+    private String callsign;
 
-    @Column(name = "address")
-    private String address;
+    @Column(name = "create_date")
+    private Timestamp createDate;
 
-    @Column(name = "state_province")
-    private String stateProvince;
+    @Column(name = "mode")
+    private String mode;
 
-    @Column(name = "country")
-    private String country;
+    @Column(name = "band")
+    private int band;
 
     @OneToOne
     @JoinColumn(name = "contact_event_id", referencedColumnName = "id")
@@ -44,40 +35,44 @@ public class ContactEvent {
         return id;
     }
 
-    public String getName() {
-        return name;
+    public void setId(long id) {
+        this.id = id;
     }
 
-    public String getAddress() {
-        return address;
+    public String getCallsign() {
+        return callsign;
     }
 
-    public String getStateProvince() {
-        return stateProvince;
+    public void setCallsign(String callsign) {
+        this.callsign = callsign;
     }
 
-    public String getCountry() {
-        return country;
+    public Timestamp getCreateDate() {
+        return createDate;
+    }
+
+    public void setCreateDate(Timestamp createDate) {
+        this.createDate = createDate;
+    }
+
+    public String getMode() {
+        return mode;
+    }
+
+    public void setMode(String mode) {
+        this.mode = mode;
+    }
+
+    public int getBand() {
+        return band;
+    }
+
+    public void setBand(int band) {
+        this.band = band;
     }
 
     public ContactEvent getContactEvent() {
         return contactEvent;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public void setAddress(String address) {
-        this.address = address;
-    }
-
-    public void setStateProvince(String stateProvince) {
-        this.stateProvince = stateProvince;
-    }
-
-    public void setCountry(String country) {
-        this.country = country;
     }
 
     public void setContactEvent(ContactEvent contactEvent) {
@@ -88,10 +83,10 @@ public class ContactEvent {
     public String toString() {
         return "ContactEvent{" +
                 "id=" + id +
-                ", name='" + name + '\'' +
-                ", address='" + address + '\'' +
-                ", stateProvince=" + stateProvince +
-                ", country=" + country +
+                ", callsign='" + callsign + '\'' +
+                ", createDate=" + createDate +
+                ", mode='" + mode + '\'' +
+                ", band=" + band +
                 ", contactEvent=" + contactEvent +
                 '}';
     }
